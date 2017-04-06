@@ -15,9 +15,12 @@ public class Vuelta {
     HashMap<Jugador,Carta> vuelta;
     
     public void agregarMano(Jugador player, Carta card){
-        vuelta.put(player, card);
+       vuelta.put(player, card);
     }
     public Carta verCartaDelJugador(Jugador player){
         return vuelta.get(player);
+    }
+    public Vuelta(){
+        vuelta = new HashMap<>();
     }
 }
