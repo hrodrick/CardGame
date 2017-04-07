@@ -49,6 +49,8 @@ public class Simulador {
     private void reparteCartas(BarajaEspañola mazo) {
         partido.jugadores.forEach((jugador) -> {
             if (!mazo.hayCartas()) {
+                System.out.println("\nMazo vacio. Repartiendo nuevas cartas...");
+                
                 mazo.mezclar();
             }
             jugador.setCarta(mazo.darLaCartaDeArriba());
@@ -94,7 +96,7 @@ public class Simulador {
 
     public void imprimirVuelta() {
         int ronda = partido.vueltas.size();
-        System.out.println("Ronda " + ronda + ": ");
+        System.out.println("\nRonda " + ronda + ": ");
         partido.jugadores.forEach((jugador) -> {
             System.out.println(jugador.getNombre() + ": " + jugador.getCarta().toString() + " puntos: " + jugador.getPuntos());
         });
@@ -138,10 +140,10 @@ public class Simulador {
         do {
             cantJugadores = entradaTeclado.nextInt();
             
-            if (cantJugadores < 1 && cantJugadores > 7) {
+            if (cantJugadores < 2 || cantJugadores > 6) {
                 System.out.println("Cantidad incorrecta, inserte 2 a 6 jugadores");
             }
-        } while (cantJugadores < 1 && cantJugadores > 7);
+        } while (cantJugadores < 2 || cantJugadores > 6);
         
         return cantJugadores;
     }
