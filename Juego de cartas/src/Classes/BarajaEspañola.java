@@ -20,6 +20,7 @@ public class BarajaEspañola {
     public void mezclar() {
         if (!hayCartas()) {
             cartasEnJuego.addAll(cartasUsadas);
+            cartasUsadas.clear();
         }
         ArrayList<Carta> cartasAmezclar = new ArrayList<>();
         while (this.hayCartas()) {
