@@ -67,7 +67,6 @@ public class Carta {
         if (palo.equalsIgnoreCase("espada")) {
             prior = 4;
         }
-
         return prior;
     }
     private int prioridadCarta(Carta anotherCard) {

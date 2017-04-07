@@ -18,15 +18,17 @@ public class BarajaEspañola {
     private ArrayList<Carta> cartasUsadas;
 
     public void mezclar() {
-        if (hayCartas()) {
-            ArrayList<Carta> cartasAmezclar = new ArrayList<>();
-            while (this.hayCartas()) {
-                cartasAmezclar.add(cartasEnJuego.pop());
-            }
-            cartasAmezclar = cartasMezcladas(cartasAmezclar);
-            cartasEnJuego.addAll(cartasAmezclar);
+        if (!hayCartas()) {
+            cartasEnJuego.addAll(cartasUsadas);
         }
+        ArrayList<Carta> cartasAmezclar = new ArrayList<>();
+        while (this.hayCartas()) {
+            cartasAmezclar.add(cartasEnJuego.pop());
+        }
+        cartasAmezclar = cartasMezcladas(cartasAmezclar);
+        cartasEnJuego.addAll(cartasAmezclar);
     }
+
     private ArrayList<Carta> cartasMezcladas(ArrayList<Carta> cartasAmezclar) {
         int lenght = cartasAmezclar.size();
         int extract = lenght - 1;
@@ -41,30 +43,35 @@ public class BarajaEspañola {
         }
         return cartasAmezclar;
     }
+
     private int randomBetween(int min, int max) {
         int resultado = (int) (Math.random() * (max - min) + min);
         return resultado;
     }
+
     public Carta darLaCartaDeArriba() {
         return cartasEnJuego.pop();
     }
+
     public void guardarCartaUsada(Carta usada) {
         cartasUsadas.add(usada);
     }
+
     public boolean hayCartas() {
         return !cartasEnJuego.isEmpty();
     }
+
     public BarajaEspañola() {
         this.cartasEnJuego = new Stack<Carta>();
-        ArrayList<Carta> mazo = new ArrayList<>();
-        mazo = crearMazo();
-        this.cartasEnJuego.addAll(mazo);
+        crearMazo();
+
         this.cartasUsadas = new ArrayList<>();
     }
-    private ArrayList<Carta> crearMazo() {
+
+    private void crearMazo() {
         Carta cardToAdd = null;
         String paloDeCarta = null;
-        ArrayList<Carta> mazo = new ArrayList<>();
+
         for (int i = 0; i < 4; i++) {
 
             switch (i) {
@@ -85,10 +92,10 @@ public class BarajaEspañola {
             }
             for (int j = 1; j < 13; j++) {
                 cardToAdd = new Carta(j, paloDeCarta);
-                mazo.add(cardToAdd);
+                cartasEnJuego.add(cardToAdd);
+
             }
         }
-        return mazo;
     }
 
 }
