@@ -5,8 +5,13 @@ package Classes;
 public class Jugador {
     private String nombre;
     private int puntos;
-    private Carta carta; //TODO: class
+    private Carta carta; 
     
+    public Jugador(String nombre){
+        this.nombre = nombre;
+        puntos = 0;
+        carta = null;
+    }
     public void setCarta(Carta carta){
         this.carta = carta;
     }
@@ -19,16 +24,12 @@ public class Jugador {
     public int getPuntos(){
         return puntos;
     }
-    public Carta devolverCarta(){
+    public Carta tirarCarta(){
         Carta Adevolver = carta;
         carta = null;
         return Adevolver;
     }
-    public Jugador(String nombre){
-        this.nombre = nombre;
-        puntos = 0;
-        carta = null;
-    }
+   
     public String getNombre(){
         return nombre;
     }

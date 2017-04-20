@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Classes;
 
 import java.util.Scanner;
+import Classes.SpanishCardClasses.*;
 
-/**
- *
- * @author Rodrigo Soria
- */
 public class Simulador {
     
     Partido partido;
@@ -22,7 +15,7 @@ public class Simulador {
     public void simularPartido(boolean automatico) {
         Scanner userIntervention = new Scanner(System.in);
         BarajaEspañola mazo = new BarajaEspañola();
-        mazo.mezclar();
+        mazo.generarMazo();
         while (!partido.partidoTerminado()) {
             
             waitForInput(automatico, userIntervention, "Se repartiran la cartas entre los jugadores");
